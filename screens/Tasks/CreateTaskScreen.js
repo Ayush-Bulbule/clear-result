@@ -130,7 +130,7 @@ const CreateTaskScreen = () => {
           />
         </View>
 
-        <View className="mt-2 bg-[#F8F8F8] p-2 rounded-md pb-4">
+        <View className="mt-2 bg-[#F8F8F8] p-2 rounded-md">
           <View className="flex flex-row items-center justify-between">
             <Text className="text-[13px] text-gray-500 font-semibold italic">
               Select Contact Person
@@ -143,7 +143,7 @@ const CreateTaskScreen = () => {
             />
           </View>
 
-          <View className="mt-2">
+          <View className={`${isEnabled?'pb-4':'hidden'}`}>
             <Text className="text-[13px] font-medium text-[#828282] mb-2">
               Contact Person
             </Text>
@@ -180,7 +180,7 @@ const CreateTaskScreen = () => {
           />
         </View>
 
-        <View className="mt-2 bg-[#F8F8F8] p-2 rounded-md pb-4">
+        <View className="mt-2 bg-[#F8F8F8] p-2 rounded-md">
           <View className="flex flex-row items-center justify-between">
             <Text className="text-[13px] text-gray-500 font-semibold italic">
               Select Contact Person
@@ -192,15 +192,16 @@ const CreateTaskScreen = () => {
               value={isEnabled2}
             />
           </View>
-
+              <View className={`${isEnabled2?'pb-4':'hidden'}`}>
           <View className="mt-2 flex flex-row  items-center">
             <View className="bg-white p-3 rounded-md mr-2">
-              <IcMail />
+              <IcMail width={20} height={20}/>
             </View>
             <View className="w-[83%]">
               <InputFeild
                 placeholder="Search & select task"
                 value={companyName}
+                className="px-3"
                 onChangeText={(text) => setCompanyName(text)}
                 secureTextEntry={false}
               />
@@ -216,13 +217,15 @@ const CreateTaskScreen = () => {
                 placeholder="Search & select task"
                 value={companyName}
                 onChangeText={(text) => setCompanyName(text)}
+                className="px-3"
                 secureTextEntry={false}
               />
             </View>
           </View>
+          </View>
         </View>
 
-        <View className="mt-2 bg-[#F8F8F8] p-2 rounded-md pb-4">
+        <View className="mt-2 bg-[#F8F8F8] p-2 rounded-md">
           <View className="flex flex-row items-center justify-between">
             <Text className="text-[13px] text-gray-500 font-semibold italic">
               Action
