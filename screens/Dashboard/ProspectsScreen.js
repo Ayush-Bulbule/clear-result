@@ -39,6 +39,7 @@ const ProspectsScreen = () => {
   };
 
   return (
+    <>
     <Screen>
       <TopBar logo={CrLogo} />
 
@@ -148,6 +149,10 @@ const ProspectsScreen = () => {
           </View>
         ))}
     </Screen>
+
+
+    </>
+
   );
 };
 

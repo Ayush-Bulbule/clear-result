@@ -201,81 +201,80 @@ const ExhibitionDetailsScreen = ({ route }) => {
           </View>
 
           <View className={`${isEnabled ? "" : "hidden"}`}>
-
-          <View className="flex flex-row items-center mt-4 justify-between">
-            <TouchableOpacity
-              onPress={() => setShare(!share)}
-              className={` ${
-                !share
-                  ? "border-blue-400 bg-blue-200"
-                  : "border-gray-300 bg-gray-200"
-              } border w-[48%]  p-2 rounded-full flex flex-row items-center justify-center`}
-            >
-              <View className="flex flex-row items-center gap-2">
-                <IcEmail />
-                <View className="flex flex-row items-center justify-between">
-                  <Text
-                    className={`${
-                      !share ? "text-blue-600" : "text-gray-700"
-                    } mr-3`}
-                  >
-                    Emails
-                  </Text>
-                  {!share && <IcClose width={8} height={8} />}
+            <View className="flex flex-row items-center mt-4 justify-between">
+              <TouchableOpacity
+                onPress={() => setShare(!share)}
+                className={` ${
+                  !share
+                    ? "border-blue-400 bg-blue-200"
+                    : "border-gray-300 bg-gray-200"
+                } border w-[48%]  p-2 rounded-full flex flex-row items-center justify-center`}
+              >
+                <View className="flex flex-row items-center gap-2">
+                  <IcEmail />
+                  <View className="flex flex-row items-center justify-between">
+                    <Text
+                      className={`${
+                        !share ? "text-blue-600" : "text-gray-700"
+                      } mr-3`}
+                    >
+                      Emails
+                    </Text>
+                    {!share && <IcClose width={8} height={8} />}
+                  </View>
                 </View>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={() => setShare(!share)}
-              className={` ${
-                share
-                  ? "border-blue-400 bg-blue-200"
-                  : "border-gray-300 bg-gray-200"
-              } border w-[48%]  p-2 rounded-full flex flex-row items-center justify-center`}
-            >
-              <View className="flex flex-row items-center gap-2">
-                <IcWhatsapp />
-                <View className="flex flex-row items-center justify-between">
-                  <Text
-                    className={`${
-                      share ? "text-blue-600" : "text-gray-700"
-                    } mr-3`}
-                  >
-                    Whatsapp
-                  </Text>
-                  {share && <IcClose width={8} height={8} />}
+              <TouchableOpacity
+                onPress={() => setShare(!share)}
+                className={` ${
+                  share
+                    ? "border-blue-400 bg-blue-200"
+                    : "border-gray-300 bg-gray-200"
+                } border w-[48%]  p-2 rounded-full flex flex-row items-center justify-center`}
+              >
+                <View className="flex flex-row items-center gap-2">
+                  <IcWhatsapp />
+                  <View className="flex flex-row items-center justify-between">
+                    <Text
+                      className={`${
+                        share ? "text-blue-600" : "text-gray-700"
+                      } mr-3`}
+                    >
+                      Whatsapp
+                    </Text>
+                    {share && <IcClose width={8} height={8} />}
+                  </View>
                 </View>
+              </TouchableOpacity>
+            </View>
+
+            <View className="bg-white p-4 mt-4 rounded-xl border-[0.8px] border-gray-300">
+              <View className="flex flex-row items-center justify-between">
+                <Text className="text-[14px] font-semibold">
+                  Whatsapp invite message template
+                </Text>
+                <IcPen />
               </View>
-            </TouchableOpacity>
-          </View>
-
-          <View className="bg-white p-4 mt-4 rounded-xl border-[0.8px] border-gray-300">
-            <View className="flex flex-row items-center justify-between">
-              <Text className="text-[14px] font-semibold">
-                Whatsapp invite message template
+              <Text className="text-[12px] text-gray-500 my-2">
+                This is a dummy text message just to...
               </Text>
-              <IcPen />
+
+              <View className="flex flex-row items-center gap-2">
+                <IcAttachment />
+                <Text className="text-[12px] text-gray-500">
+                  Attach for invite
+                </Text>
+              </View>
             </View>
-            <Text className="text-[12px] text-gray-500 my-2">
-              This is a dummy text message just to...
-            </Text>
 
-            <View className="flex flex-row items-center gap-2">
-              <IcAttachment />
-              <Text className="text-[12px] text-gray-500">
-                Attach for invite
-              </Text>
+            <View className="flex flex-row items-center justify-center">
+              <TouchableWithoutFeedback>
+                <Text className="text-[16px] font-medium text-[#2F80ED] underline mt-4">
+                  Share on social media
+                </Text>
+              </TouchableWithoutFeedback>
             </View>
-          </View>
-
-          <View className="flex flex-row items-center justify-center">
-            <TouchableWithoutFeedback>
-              <Text className="text-[16px] font-medium text-[#2F80ED] underline mt-4">
-                Share on social media
-              </Text>
-            </TouchableWithoutFeedback>
-          </View>
           </View>
         </View>
 
@@ -292,9 +291,8 @@ const ExhibitionDetailsScreen = ({ route }) => {
             />
           </View>
           <View className={`${isEnabled1 ? "mt-4" : "hidden"}`}>
-            {
-              isEnabled1 && (
-                <Slider
+            {isEnabled1 && (
+              <Slider
                 style={{
                   width: "100%",
                 }}
@@ -306,46 +304,44 @@ const ExhibitionDetailsScreen = ({ route }) => {
                 maximumTrackTintColor="gray"
                 thumbTintColor="#007AFF"
               />
-              )
-            }
-           
+            )}
 
-          <View className="flex flex-row items-center justify-between my-4">
-            <View className="bg-gray-200 p-2 rounded border-[0.2px]">
-              <Text>{sliderValue.toFixed()}</Text>
+            <View className="flex flex-row items-center justify-between my-4">
+              <View className="bg-gray-200 p-2 rounded border-[0.2px]">
+                <Text>{sliderValue.toFixed()}</Text>
+              </View>
+
+              <View className="bg-gray-200 p-2 rounded border-[0.2px]">
+                <Text>{5000 * 100}</Text>
+              </View>
             </View>
 
-            <View className="bg-gray-200 p-2 rounded border-[0.2px]">
-              <Text>{5000 * 100}</Text>
+            <View className="bg-white rounded-lg p-2 mt-2">
+              <View className="flex flex-row items-center justify-between">
+                <Text>Rental Cost</Text>
+
+                <IcPen />
+              </View>
+
+              <View className="flex flex-row items-center gap-2 my-1">
+                <Text className="text-[12px] text-gray-400">
+                  {" "}
+                  Budget: 70,000 max.
+                </Text>
+              </View>
             </View>
-          </View>
 
-          <View className="bg-white rounded-lg p-2 mt-2">
-            <View className="flex flex-row items-center justify-between">
-              <Text>Rental Cost</Text>
-
-              <IcPen />
+            <View className="flex flex-row items-center justify-center">
+              <TouchableWithoutFeedback>
+                <Text className="text-[16px] font-medium text-[#2F80ED] underline mt-4">
+                  + Add other expenses
+                </Text>
+              </TouchableWithoutFeedback>
             </View>
-
-            <View className="flex flex-row items-center gap-2 my-1">
-              <Text className="text-[12px] text-gray-400">
-                {" "}
-                Budget: 70,000 max.
-              </Text>
-            </View>
-          </View>
-
-          <View className="flex flex-row items-center justify-center">
-            <TouchableWithoutFeedback>
-              <Text className="text-[16px] font-medium text-[#2F80ED] underline mt-4">
-                + Add other expenses
-              </Text>
-            </TouchableWithoutFeedback>
-          </View>
           </View>
         </View>
 
-        <View className="mt-2 bg-blue-50 py-2 px-2 rounded-lg w-full">
+        <View className="mt-2 bg-blue-50 p-2 rounded-lg">
           <View className="flex flex-row items-center justify-between ">
             <Text className="italic text-gray-500 font-medium">
               Contact Details
@@ -357,17 +353,19 @@ const ExhibitionDetailsScreen = ({ route }) => {
               value={isEnabled2}
             />
           </View>
-          <View className={`${isEnabled2 ? "mt-4" : "hidden"}`}>
+          <View className={`${isEnabled2 ? "mt-4 flex " : "hidden"}`}>
             <View className="mt-2">
               <Text className="text-[12px] font-medium text-[#828282] mb-2">
                 Profession
               </Text>
 
               <View className="flex flex-row items-center justify-between">
-                <TextInput
-                  className="border border-blue-300 p-2 rounded-md bg-white px-2 pl-2 flex-1"
-                  placeholder="Select the profession"
-                />
+                <View className="flex-1">
+                  <InputFeild
+                    className="p-2 border border-blue-300 rounded-md bg-white"
+                    placeholder="Select the profession"
+                  />
+                </View>
 
                 <TouchableOpacity className="bg-gray-300 p-[14px] rounded-md ml-1">
                   <IcSearch />
@@ -375,16 +373,15 @@ const ExhibitionDetailsScreen = ({ route }) => {
               </View>
             </View>
 
-            <View className="mt-2">
-              <Text className="text-[12px] font-medium text-[#828282] mb-2">
+              <Text className="text-[12px] mt-2 font-medium text-[#828282] mb-2">
                 Contact Person
               </Text>
-
-              <TextInput
-                className="border border-blue-300 p-2 rounded-md bg-white pl-2 flex-1"
-                placeholder="Select the contact person"
-              />
-            </View>
+              <View className="flex-1">
+                <InputFeild
+                  className="p-2 border border-blue-300 rounded-md bg-white flex-1"
+                  placeholder="Select the contact person"
+                />
+              </View>
 
             {/* Mobile Number */}
             <View className="mt-4 ">
@@ -398,12 +395,13 @@ const ExhibitionDetailsScreen = ({ route }) => {
                     <IcDown />
                   </View>
                 </TouchableOpacity>
-
-                <TextInput
-                  placeholder="+91 9876543210"
-                  secureTextEntry={false}
-                  inputMode="numeric"
-                />
+                <View className="flex-1">
+                  <TextInput
+                    placeholder="+91 9876543210"
+                    secureTextEntry={false}
+                    inputMode="numeric"
+                  />
+                </View>
               </View>
               <View className="flex flex-row items-center justify-start">
                 <CheckBox
@@ -428,12 +426,13 @@ const ExhibitionDetailsScreen = ({ route }) => {
                       <IcDown />
                     </View>
                   </TouchableOpacity>
-
-                  <TextInput
-                    placeholder="+91 9876543210"
-                    secureTextEntry={false}
-                    inputMode="numeric"
-                  />
+                  <View className="flex-1">
+                    <TextInput
+                      placeholder="+91 9876543210"
+                      secureTextEntry={false}
+                      inputMode="numeric"
+                    />
+                  </View>
                 </View>
               </View>
             )}
@@ -442,11 +441,12 @@ const ExhibitionDetailsScreen = ({ route }) => {
               <Text className="text-[12px] font-medium text-[#828282] mb-2">
                 Email Address
               </Text>
-
-              <TextInput
-                className="border border-blue-300 p-2 rounded-md bg-white pl-3 flex-1"
-                placeholder="Enter the email address"
-              />
+              <View className="flex-1">
+                <InputFeild
+                  className="p-2 border border-blue-300 rounded-md bg-white flex-1"
+                  placeholder="Enter the email address"
+                />
+              </View>
             </View>
 
             {saveNew && (

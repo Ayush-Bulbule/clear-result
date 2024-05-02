@@ -21,33 +21,17 @@ import { useNavigation } from "@react-navigation/native";
 import { CheckBox } from "@ui-kitten/components";
 import { SelectList } from "react-native-dropdown-select-list";
 import { useUserRole } from "../../context/UserContext";
+import InputFeild from "../../components/ui/InputFeild";
 
-const InputFeild = ({
-  placeholder,
-  value,
-  onChangeText,
-  secureTextEntry,
-  keyboardType,
-  className,
-}) => {
-  return (
-    <TextInput
-      className={`border border-[#2f81ed4d] p-2 rounded-md  ${className}`}
-      placeholder={placeholder}
-      value={value}
-      onChangeText={onChangeText}
-      secureTextEntry={secureTextEntry}
-      keyboardType={keyboardType}
-    />
-  );
-};
+const data = [
+  { key: "1", value: "Piyush Sharma" },
+  { key: "2", value: "Parveen Kumar" },
+];
 
 const UserInfoFormScreen = () => {
   const navigation = useNavigation();
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
-
-
 
   const [hasWhatsapp, setHasWhatsapp] = useState(false);
 
@@ -59,7 +43,7 @@ const UserInfoFormScreen = () => {
 
   const toggleSwitch2 = () => {
     setIsEnabled2((previousState) => !previousState);
-  }
+  };
 
   const [selectedPerson, setSelectedPerson] = useState("");
 
@@ -164,7 +148,11 @@ const UserInfoFormScreen = () => {
               </View>
             </TouchableOpacity>
 
-            <TextInput placeholder="+91 9876543210" secureTextEntry={false} inputMode="numeric"  />
+            <TextInput
+              placeholder="+91 9876543210"
+              secureTextEntry={false}
+              inputMode="numeric"
+            />
           </View>
           <View className="flex flex-row items-center justify-start">
             <CheckBox
@@ -190,7 +178,11 @@ const UserInfoFormScreen = () => {
                 </View>
               </TouchableOpacity>
 
-              <TextInput placeholder="+91 9876543210" secureTextEntry={false} inputMode="numeric"/>
+              <TextInput
+                placeholder="+91 9876543210"
+                secureTextEntry={false}
+                inputMode="numeric"
+              />
             </View>
           </View>
         )}
@@ -219,13 +211,39 @@ const UserInfoFormScreen = () => {
             />
           </View>
 
-          <View className={`${isEnabled1?'flex':'hidden'} gap-y-2`}>
+          <View className={`${isEnabled1 ? "flex" : "hidden"} gap-y-2`}>
             <Text className="text-[13px] text-gray-500 font-semibold ">
               Agent
             </Text>
             <View className="flex-row flex gap-x-2 items-center">
-              <View className="border-blue-200 bg-white border px-3 py-2 rounded-lg flex-1">
-                <TextInput placeholder="Search & select distributor" />
+              <View className="flex-1">
+                <SelectList
+                  setSelected={(val) => setSelectedPerson(val)}
+                  data={data}
+                  save="value"
+                  placeholder="Search & Select Agent"
+                  boxStyles={{
+                    flex: 1,
+                    borderWidth: 1,
+                    borderColor: "#95C2FF",
+                    borderRadius: 8,
+                  }}
+                  dropdownStyles={{
+                    position: "absolute",
+                    zIndex: 1000,
+                    width: "100%",
+                    top: 36,
+                    left: 0,
+                    backgroundColor: "white",
+                    borderColor: "white",
+                    borderRadius: 8,
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.25,
+                    shadowRadius: 3.84,
+                    elevation: 5,
+                  }}
+                />
               </View>
               <View className=" p-3 rounded-md mr-2 bg-gray-200">
                 <IcPlusLight />
@@ -235,17 +253,44 @@ const UserInfoFormScreen = () => {
               Distributor
             </Text>
             <View className="flex-row flex gap-x-2 items-center">
-              <View className="border-blue-200 bg-white border px-3 py-2 rounded-lg flex-1">
-                <TextInput placeholder="Search & select distributor" />
+              <View className="flex-1">
+                <SelectList
+                  setSelected={(val) => setSelectedPerson(val)}
+                  data={data}
+                  save="value"
+                  placeholder="Search & Select Distributor"
+                  boxStyles={{
+                    flex: 1,
+                    borderWidth: 1,
+                    borderColor: "#95C2FF",
+                    borderRadius: 8,
+                  }}
+                  dropdownStyles={{
+                    position: "absolute",
+                    zIndex: 1000,
+                    width: "100%",
+                    top: 36,
+                    left: 0,
+                    backgroundColor: "white",
+                    borderColor: "white",
+                    borderRadius: 8,
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.25,
+                    shadowRadius: 3.84,
+                    elevation: 5,
+                  }}
+                />
               </View>
               <View className=" p-3 rounded-md mr-2 bg-gray-200">
                 <IcPlusLight />
               </View>
             </View>
+            
           </View>
         </View>
 
-        <View className="mt-2 bg-[#F8F8F8] p-2 rounded-2xl">
+        <View className="mt-2 bg-[#F8F8F8] p-2 rounded-2xl -z-10">
           <View className="flex flex-row items-center justify-between">
             <Text className="text-[13px] text-gray-500 font-semibold italic">
               Prospects Details{" "}

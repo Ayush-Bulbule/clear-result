@@ -16,27 +16,7 @@ import IcMail from "../../assets/icons/ic_mail.svg";
 import IcWhatsapp from "../../assets/icons/ic_whatsapp.svg";
 import { useNavigation } from "@react-navigation/native";
 import { SelectList } from "react-native-dropdown-select-list";
-const InputFeild = ({
-  placeholder,
-  value,
-  onChangeText,
-  secureTextEntry,
-  keyboardType,
-}) => {
-  return (
-    <View className="">
-      <TextInput
-        className="border border-[#2f81ed4d] p-2 rounded-md w-full"
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        secureTextEntry={secureTextEntry}
-        keyboardType={keyboardType}
-      />
-    </View>
-  );
-};
-
+import InputFeild from "../../components/ui/InputFeild"
 const CreateTaskScreen = () => {
   const navigation = useNavigation();
   const [companyName, setCompanyName] = useState("");
@@ -197,7 +177,7 @@ const CreateTaskScreen = () => {
             <View className="bg-white p-3 rounded-md mr-2">
               <IcMail width={20} height={20}/>
             </View>
-            <View className="w-[83%]">
+            <View className="w-[83%] flex-1">
               <InputFeild
                 placeholder="Search & select task"
                 value={companyName}
@@ -212,7 +192,7 @@ const CreateTaskScreen = () => {
             <View className="bg-white p-3 rounded-md mr-2">
               <IcWhatsapp />
             </View>
-            <View className="w-[83%]">
+            <View className="w-[83%] flex-1">
               <InputFeild
                 placeholder="Search & select task"
                 value={companyName}

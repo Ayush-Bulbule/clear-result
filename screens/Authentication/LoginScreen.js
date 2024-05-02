@@ -41,8 +41,10 @@ const InputFeild = ({
 export default function LoginScreen() {
   const [toggleValue, setToggleValue] = useState(false);
 
+  const [emailErr, setEmailErr] = useState(false);
+  const [passwordErr, setPasswordErr] = useState(false);
 
-  const {setUserRole} = useUserRole();
+  const { setUserRole } = useUserRole();
 
   const handleToggle = (value) => {
     setToggleValue(value);
@@ -57,7 +59,37 @@ export default function LoginScreen() {
     navigation.navigate("Signup");
   };
 
+  const onEmailChange = (text) => {
+    if(email!="")
+      setEmailErr(false);
+    setEmail(text);
+  }
+
+  const onPasswordChange = (text) => {
+    if(password!="")
+      setPasswordErr(false);
+    setPassword(text);
+  }
+
   const handleLogin = () => {
+    if(email == "" && password == ""){
+      setEmailErr(true);
+      setPasswordErr(true);
+    }
+    if (email == "") {
+      setEmailErr(true);
+      return;
+    }
+    if (password == "") {
+      setPasswordErr(true);
+      return;
+    }
+
+    if (!email.includes("@") && !email.includes(".")) {
+      setEmailOrPass("Please enter a valid email");
+      return;
+    }
+
     if (email == "admin@cr.com" && password == "admin") {
       setUserRole("admin");
       navigation.navigate("Home", {
@@ -65,7 +97,7 @@ export default function LoginScreen() {
       });
       return;
     } else {
-      setUserRole("user")
+      setUserRole("user");
       navigation.navigate("Home");
     }
   };
@@ -99,24 +131,41 @@ export default function LoginScreen() {
                 <Text className="text-[14px] font-medium text-[#828282] mb-2">
                   Email ID/ Mobile Number
                 </Text>
-                <InputFeild
+                <TextInput
                   placeholder="olivia@untitledui.com"
                   value={email}
-                  onChangeText={(text) => setEmail(text)}
+                  onChangeText={(text) => onEmailChange(text)}
+                  className={`border ${emailErr||emailOrPass?"border-red-500":"border-gray-300"} p-2 rounded-md mb-2`}
                   secureTextEntry={false}
                 />
+                {emailErr && (
+                  <Text className="text-[12px] text-red-500">
+                    This field is mandatory
+                  </Text>
+                )  
+                }
+
+                {emailOrPass != "" && (
+                  <Text className="text-[12px] text-red-500">{emailOrPass}</Text>
+                )}
               </View>
 
               <View>
                 <Text className="text-[14px] font-medium text-[#828282] mb-2">
                   Password
                 </Text>
-                <InputFeild
-                  placeholder="****************"
+                <TextInput
+                  placeholder="Passw***"
                   value={password}
-                  onChangeText={(text) => setPassword(text)}
+                  className={`border ${passwordErr?"border-red-500":"border-gray-300"} p-2 rounded-md mb-2`}
+                  onChangeText={(text) => onPasswordChange(text)}
                   secureTextEntry={true}
                 />
+                {passwordErr && (
+                  <Text className="text-[12px] text-red-500">
+                    This field is mandatory
+                  </Text>
+                )}
               </View>
 
               <TouchableOpacity

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -24,6 +24,7 @@ import TrackRefundStatus from "../screens/dashboard/TrackRefundStatus";
 import AdminTabNavigation from "./adminNavigation";
 import SupportScreen from "../screens/support/SupportScreen";
 import ServerScreen from "../screens/server/ServerScreen";
+import { useUserRole } from "../context/UserContext";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -39,7 +40,6 @@ const DrawerNavigation = () => {
         component={TabNavigation}
         options={{ headerShown: false }}
       />
-
       <Drawer.Screen
         name="AdminDashboard"
         options={{ headerShown: false }}
@@ -92,7 +92,7 @@ const DrawerNavigation = () => {
         component={TrackRefundStatus}
         options={{ headerShown: false }}
       />
-       <Drawer.Screen
+      <Drawer.Screen
         name="SupportScreen"
         component={SupportScreen}
         options={{ headerShown: false }}
@@ -101,14 +101,33 @@ const DrawerNavigation = () => {
         name="ServerScreen"
         component={ServerScreen}
         options={{ headerShown: false }}
-        />
+      />
     </Drawer.Navigator>
   );
 };
 
 const CustomDrawerContent = ({ navigation }) => {
+  const { userType } = useUserRole();
+
   const closeDrawer = () => {
     navigation.dispatch(DrawerActions.closeDrawer());
+  };
+
+  useEffect(() => {
+    console.log(userType);
+  }, [userType]);
+
+  const handleNavigateHome = () => {
+    if (userType == "admin") {
+      navigation.navigate("AdminDashboard");
+    } else {
+      navigation.navigate("Tab", {
+        screen: "HomeStack",
+        params: {
+          screen: "Home",
+        },
+      });
+    }
   };
 
   return (
@@ -187,6 +206,12 @@ const CustomDrawerContent = ({ navigation }) => {
         }
       >
         <Text className="font-semibold ">Server Processing Time</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        className="bg-[#F4F9FF] p-4 rounded-xl my-2"
+        onPress={handleNavigateHome}
+      >
+        <Text className="font-semibold ">Dashboard</Text>
       </TouchableOpacity>
     </View>
   );

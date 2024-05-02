@@ -5,7 +5,7 @@ const UserRoleContext = createContext();
 
 // Provider component that wraps part of your application
 export const UserRoleProvider = ({ children }) => {
-  const [userRole, setUserRole] = useState(null);
+  const [userRole, setUserRole] = useState("user");
 
   // Value provided to the consuming components
   const value = {

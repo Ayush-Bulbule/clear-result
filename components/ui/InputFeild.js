@@ -10,9 +10,8 @@ const InputFeild = ({
   lineCount,
 }) => {
   return (
-    <View className="">
+    <View className="border border-blue-300 p-2 rounded-md bg-white">
       <TextInput
-        className="border border-gray-300 p-2 rounded-md "
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
