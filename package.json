@@ -40,6 +40,7 @@
     "react-native-heroicons": "^3.2.0",
     "react-native-maps": "1.10.0",
     "react-native-pager-view": "6.2.3",
+    "react-native-popup-menu": "^0.16.1",
     "react-native-ratings": "^8.1.0",
     "react-native-reanimated": "~3.6.2",
     "react-native-reanimated-carousel": "^3.5.1",
